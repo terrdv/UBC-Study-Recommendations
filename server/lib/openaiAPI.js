@@ -11,7 +11,7 @@ export async function getStudyMethod({answers}) {
     try {
         const response = await client.responses.create({
             model: "gpt-4o-mini",
-            input: `Given the following responses, recommend suitable study methods: ${answers}`,
+            input: `Given the following responses to questions about study habits, recommend suitable study methods: ${answers}`,
             response_format: {
               type: "json_schema",
               json_schema: {
@@ -44,7 +44,42 @@ export async function getStudyMethod({answers}) {
     
 }
     
+export async function getStudyLocation({answers}) {
+    try {
+        const response = await client.responses.create({
+            model: "gpt-4o-mini",
+            input: `Given the following responses to questions about study environment preferences, recommend suitable study locations at UBC Vancouver: ${answers}`,
+            response_format: {
+              type: "json_schema",
+              json_schema: {
+                name: "study_location",
+                schema: {
+                  type: "object",
+                  properties: {
+                    name: { type: "string" },
+                    description: { type: "string" },
+                    explanation: { type: "string" }
+                  },
+                  required: ["name", "description", "explanation"]
+                }
+              }
+            }
+          });
+        return response.output_parsed
+    
+    } catch (err) {
+        if (err.response) {
+            console.error("API Error: ", err.response.status, err.response.data)
+        } else if (err.request) {
+            console.error("Request Error:", err.request)
+        } else {
+            console.error(err.message)
+        }
+    }
 
+    return response
+    
+}
 
 
 
