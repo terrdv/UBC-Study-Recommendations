@@ -1,6 +1,4 @@
 
-
-
 const locationQuestions = [
     "Do you prefer complete silence, some background noise, or a lively environment?",
     "I prefer to study in complete silence.",
@@ -29,9 +27,13 @@ const methodQuestions = [
 
 
 
+export async function getLocationQuestion({index}) {
+    return res.json({question : locationQuestion[index]})
+}
 
-export async function getR() {
 
+export async function getMethodQuestion({index}) {
+    return res.json({question : methodQuestion[index]})
 }
 
 
