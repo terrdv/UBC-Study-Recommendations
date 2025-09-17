@@ -13,7 +13,7 @@ const getLocationResults = async (req, res) => {
 const getMethodResults = async (req, res) => {
     const {answers} = req.body
     const result = await getStudyMethod(answers)
-    res.json(result)
+    res.status(200).json(result)
 } 
 
 
