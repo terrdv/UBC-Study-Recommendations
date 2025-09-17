@@ -1,5 +1,5 @@
-import OpenAI from "openai";
-import dotenv from 'dotenv'
+const OpenAI = require('openai')
+const dotenv = require('dotenv')
 dotenv.config()
 
 const client = new OpenAI({
@@ -7,11 +7,13 @@ const client = new OpenAI({
 });
 
 
-export async function getStudyMethod({answers}) {
+async function getStudyMethod(answers) {
     try {
         const response = await client.responses.create({
             model: "gpt-4o-mini",
-            input: `Given the following responses to questions about study habits, recommend suitable study methods: ${answers}`,
+            input: `Given the following responses to questions about study habits, recommend suitable study methods: 
+                    Questions: 
+                      0. ${answers}`,
             response_format: {
               type: "json_schema",
               json_schema: {
@@ -39,16 +41,16 @@ export async function getStudyMethod({answers}) {
             console.error(err.message)
         }
     }
-
-    return response
     
 }
     
-export async function getStudyLocation({answers}) {
+async function getStudyLocation(answers) {
     try {
         const response = await client.responses.create({
             model: "gpt-4o-mini",
-            input: `Given the following responses to questions about study environment preferences, recommend suitable study locations at UBC Vancouver: ${answers}`,
+            input: `Given the following responses to questions about study environment preferences, recommend suitable study locations at UBC Vancouver: ${answers}
+            
+                    0. ...`,
             response_format: {
               type: "json_schema",
               json_schema: {
@@ -76,19 +78,10 @@ export async function getStudyLocation({answers}) {
             console.error(err.message)
         }
     }
-
-    return response
     
 }
 
-
-
-// const response = await client.responses.create({
-//     model: "gpt-5",
-//     input: "Write a one-sentence bedtime story about a unicorn."
-// });
-
-console.log(response.output_text);
+module.exports = { getStudyMethod, getStudyLocation }
 
 
 

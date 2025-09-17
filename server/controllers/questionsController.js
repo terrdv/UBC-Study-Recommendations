@@ -25,15 +25,22 @@ const methodQuestions = [
     "I prefer flexible, unstructured study sessions rather than a strict schedule."
 ]
 
-
-
-export async function getLocationQuestion({index}) {
-    return res.json({question : locationQuestion[index]})
+const getLocationQuestion = (req, res) => {
+    const { index } = req.params
+    return res.json({ question: locationQuestions[index] })
 }
 
-
-export async function getMethodQuestion({index}) {
-    return res.json({question : methodQuestion[index]})
+const getMethodQuestion = (req, res) => {
+    const { index } = req.params
+    return res.json({ question: methodQuestions[index] })
 }
 
+const getMethodQuestions = (req, res) => {
+    return res.json({ questions: methodQuestions })
+}
 
+const getLocationQuestions = (req, res) => {
+    return res.json({ questions: locatioNQuestions })
+}
+
+module.exports = { getLocationQuestion, getMethodQuestion, getMethodQuestions, getLocationQuestions }
