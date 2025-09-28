@@ -9,9 +9,9 @@ app.get('/', (req, res) => {
     res.send("Hello World!")
 })
 
-app.use('/questions', questionRouter)
+app.use('/api/questions', questionRouter)
 
-app.use('/results', resultRouter)
+app.use('/api/results', resultRouter)
 
 
 app.listen(3000, (req, res) => {

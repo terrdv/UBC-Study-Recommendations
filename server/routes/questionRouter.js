@@ -4,8 +4,8 @@ const {getLocationQuestion, getMethodQuestion, getLocationQuestions, getMethodQu
 
 router.get('/location/:index', getLocationQuestion)
 router.get('/method/:index', getMethodQuestion)
-router.get('/locations', getMethodQuestions)
-router.get('/methods', getLocationQuestions)
+router.get('/locations', getLocationQuestions)
+router.get('/methods', getMethodQuestions)
 
 
 module.exports = router

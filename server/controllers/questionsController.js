@@ -9,7 +9,8 @@ const locationQuestions = [
     "I enjoy studying in scenic or aesthetically pleasing environments.",
     "I am comfortable with studying in crowded or busy areas.",
     "I prefer long, uninterrupted study sessions (3+ hours).",
-    "I like study spots that have a relaxed, café-like atmosphere."
+    "I like study spots that have a relaxed, café-like atmosphere.",
+    
 ]
 
 const methodQuestions = [
@@ -40,7 +41,7 @@ const getMethodQuestions = (req, res) => {
 }
 
 const getLocationQuestions = (req, res) => {
-    return res.json({ questions: locatioNQuestions })
+    return res.json({ questions: locationQuestions })
 }
 
 module.exports = { getLocationQuestion, getMethodQuestion, getMethodQuestions, getLocationQuestions }

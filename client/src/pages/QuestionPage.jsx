@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import '../css/QuestionPage.css';
 import {useEffect, useState} from "react";
-import {fetchLocationQuestions} from "../services//api";
+import {fetchLocationQuestions} from "../services/api";
 
 
 
@@ -10,6 +10,8 @@ function QuestionPage() {
     const [questions, setQuestions] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState({});
+
+    
 
     
     useEffect(() => {
